@@ -1,0 +1,186 @@
+*{margin: 0;padding: 0}
+html{font-size: 100px;width: 100%;height: 100%;}
+body{width: 100%;height: 100%;margin:0px;padding:0px;font-family:"微软雅黑";line-height:1.5;-webkit-tap-highlight-color:rgba(0,0,0,0);font-size:0.14rem;background-color: #fff;}
+i{font-style: normal;}
+p{font-size: 0.14rem;margin-bottom: 0px;}
+ul{padding-left: 0;}
+a{text-decoration: none;color: #666;}
+ul li{list-style:none;}h3{font-size: 0.14rem;}
+img{max-width:100%;border:0}
+.clearFix:after{content: '';height: 0;display: block;visibility: hidden;clear: both;}
+.fl{float: left;}
+.fr{float: right;}
+
+.talkTitle{
+    text-align: center;
+    width: 100%;
+    height: .6rem;
+    line-height: .6rem;
+    font-size: .2rem;
+    background-color: #333;
+    color: #f2f2f2;
+}
+.npcTalklist{
+    background-color: #c2c2c2;
+    box-sizing: border-box;
+    min-height: 6.07rem;
+    padding-bottom: .5rem;
+    padding-top: .1rem;
+}
+.npcTalkItem{
+    width: 100%;
+    box-sizing: border-box;
+    padding: .1rem .2rem .05rem;
+}
+.npcTalkTime{
+    margin-top: .1rem;
+    font-size:.12rem;
+    color: #15597e;
+    text-align: center;
+}
+/*QQ对话*/
+.npcTalk{
+
+}
+.npcTalk .npcTalkCon {
+    max-width: 2.2rem;
+    font-size: .15rem;
+    color: #333;
+    background-color: #fff;
+    border-radius: .15rem;
+    position: relative;
+    padding: .15rem;
+    text-align: justify;
+}
+.npcTalkPadding{
+    font-size: .15rem;
+    padding: .35rem .15rem;
+    color: rgba(255,255,255,0);
+}
+.npcTalkImg img{
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+}
+.npcTalk .npcTalkCon::after{
+    content: '';
+    width: 0;
+    height: 0;
+    border-width:11px;
+    border-style: solid;
+    border-color: transparent;
+    position: absolute;
+    top: 16px;
+}
+.border-left .npcTalk{
+    float: left;
+}
+.border-right .npcTalk{
+    float: right;
+}
+.npcTalk .npcTalkCon i {
+    display: block;
+    width: .2rem;
+    height: .2rem;
+}
+.npcTalk.fl .npcTalkCon i{
+    float: left;
+    margin-right: .3rem;
+    background: url("../images/lyz.png") no-repeat center;
+    background-size: .3rem .3rem;
+}
+.npcTalk.fr .npcTalkCon i{
+    float: right;
+    margin-left: .3rem;
+    background: url("../images/lyy.png") no-repeat center -1px;
+    background-size: .3rem .3rem;
+}
+.border-left .npcTalkImg img{
+    margin-right: .2rem;
+}
+.border-right .npcTalkImg img{
+    margin-left: .2rem;
+}
+.border-left .npcTalk .npcTalkCon::after {
+    border-right-color: #fff;
+    left: -20px;
+}
+.border-right .npcTalk .npcTalkCon::after {
+    border-left-color: #fff;
+    right: -20px;
+}
+
+.footerTalk{
+    height: .49rem;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    border-top: 1px solid #000;
+}
+.footerTalk .left{
+    width: 14%;
+    height: .5rem;
+    background: url("../images/ly.png") no-repeat center;
+    background-size: 80% 80%;
+    border-right: 1px solid #000;
+    box-sizing: border-box;
+}
+.footerTalk.audio .left{
+    background: url("../images/jp.png") no-repeat center;
+    background-size: 80% 80%;
+}
+.footerTalk.audio {
+    display: none;
+}
+.footerTalk .center{
+    width: 72%;
+    height: .5rem;
+}
+.footerTalk.audio .center{
+    text-align: center;
+    line-height: .5rem;
+}
+.footerTalk .center input{
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.footerTalk .right{
+    width: 14%;
+    height: .5rem;
+    line-height: .5rem;
+    color: #111;
+    text-align: center;
+    box-sizing: border-box;
+    border-left: 1px solid #000;
+}
+
+@media (max-width: 374px) {
+    html{font-size: 85.34px;}
+    body{font-size:0.12rem;}
+}
+@media (min-width : 320px){
+    html{font-size: 85.34px;}
+}
+@media (min-width: 360px) {
+    html{font-size: 96px;}
+}
+@media (min-width : 375px){
+    html{font-size:100px;}
+}
+@media (min-width : 384px){
+    html{font-size:102.5px;}
+}
+@media (min-width : 411px){
+    html{font-size: 110px;}
+}
+@media (min-width: 600px) {
+    html{font-size: 160.4px;}
+}
+@media (min-width : 768px){
+    html{font-size: 205.4px;}
+}
+@media (min-width : 800px){
+    html{font-size: 213px;}
+}

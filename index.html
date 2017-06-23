@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width,height=device-height">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="talkTitle">普兰大数据</div>
+<div class="npcTalklist">
+    <div class="npcTalkItem clearFix border-left" >
+        <div class="npcTalkImg fl">
+            <img src="images/1.jpg" alt="头像">
+        </div>
+        <div class="npcTalk fl" >
+            <div class="npcTalkCon" >
+               你好！
+            </div>
+        </div>
+    </div>
+    <div class="npcTalkTime">6月11日  下午21:22</div>
+    <div class="npcTalkItem clearFix border-right" >
+        <div class="npcTalkImg fr">
+            <img src="images/2.jpg" alt="头像">
+        </div>
+        <div class="npcTalk fr" >
+            <div class="npcTalkCon" >
+                Hello！欢迎关注公众号！我们期待您的加盟
+            </div>
+        </div>
+    </div>
+    <div class="npcTalkItem clearFix border-left" >
+        <div class="npcTalkImg fl">
+            <img src="images/1.jpg" alt="头像">
+        </div>
+        <div class="npcTalk fl" >
+            <div class="npcTalkCon audioPlay" >
+                <i></i> 35'
+                <audio  src="images/3.mp3" >
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+        </div>
+    </div>
+    <div class="npcTalkItem clearFix border-right" >
+        <div class="npcTalkImg fr">
+            <img src="images/2.jpg" alt="头像">
+        </div>
+        <div class="npcTalk fr" >
+            <div class="npcTalkCon audioPlay" >
+                <i></i> 35'
+                <audio  src="images/3.mp3" >
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footerTalk clearFix">
+     <div class="left fl"></div>
+     <div class="center fl">
+         <input type="text" id="val" >
+     </div>
+    <div class="right fl textSent">发送</div>
+</div>
+<div class="footerTalk clearFix audio">
+    <div class="left fl"></div>
+    <div class="center fl audioSent">
+       点击说话
+        <div id="canvas_wrapper" style="display:none">
+            <div style="display: inline">&spades;</div>
+            <canvas id="volume" height="4"></canvas>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="./js/jquery-1.10.1.js"></script>
+<script src="js/to16.js"></script>
+<script type="text/javascript" src='./js/fingerprint2.min.js'></script>
+<script type="text/javascript" src="./js/iat.all.js"></script>
+<script type="text/javascript" src="./js/demo.js"></script>
+
+<script>
+    $(function(){
+        $('.footerTalk .left').click(function(){
+            var $div=$(this).parents('.footerTalk');
+            $div.hide().siblings('.footerTalk').show();
+        })
+        $('.textSent').click(function(){
+            var str=$('#val').val();
+            var html='<div class="npcTalkItem clearFix border-left" > ' +
+                    '<div class="npcTalkImg fl"> ' +
+                    '<img src="images/1.jpg" alt="头像"> ' +
+                    '</div> ' +
+                    '<div class="npcTalk fl" > ' +
+                    '<div class="npcTalkCon" >' +
+                    str+' </div> </div> </div>';
+                     $('.npcTalklist').append(html);
+                    $('#val').val('');
+            var obj={open_id:"123456",type:"text",content:str};
+            $.ajax({
+                url: 'https://www.bigdatum.cn/message/sendtext',
+                type: 'post',
+                data: JSON.stringify(obj),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    var str='<div class="npcTalkItem clearFix border-right" > ' +
+                         '<div class="npcTalkImg fr"> ' +
+                         '<img src="images/2.jpg" alt="头像"> ' +
+                         '</div> ' +
+                         '<div class="npcTalk fr" > ' +
+                         '<div class="npcTalkCon" >' +
+                         data.retObj.content +
+                         '</div> ' +
+                         '</div> ' +
+                         '</div>';
+                    $('.npcTalklist').append(str);
+                    console.log(data);
+                },
+                error: function (xhr, errorType, error) {
+                    console.log(error);
+                }
+            });
+        });
+        $('.npcTalklist').bind('click','.npcTalklist',function(event){
+            console.log(event.target);
+            var audio= $(event.target).children('audio')[0]|| $(event.target).siblings('audio')[0];
+            console.log(audio);
+            if(audio!==null&&audio!==undefined){
+                if(audio.paused){
+                    $('audio').each(function(idx,ele){
+                        ele.pause();
+                    })
+                    audio.play();// 这个就是播放
+                }else {
+                    audio.pause();
+                }
+            }
+        })
+    })
+
+</script>
